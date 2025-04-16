@@ -16,6 +16,11 @@ corepack_enable: false
 nodejs_version: "22"
 omit_containers:
     - db
+web_extra_exposed_ports:
+    - name: vite
+      container_port: 3000
+      http_port: 2999
+      https_port: 3000
 
 # Key features of DDEV's config.yaml:
 
