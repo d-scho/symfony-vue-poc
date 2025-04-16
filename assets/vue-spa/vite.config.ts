@@ -18,4 +18,16 @@ export default defineConfig({
     strictPort: true,
     allowedHosts: ["symfony-vue-poc.ddev.site"],
   },
+  build: {
+    rollupOptions: {
+      input: fileURLToPath(new URL("./src/app.ts", import.meta.url)),
+      output: {
+        entryFileNames: `[name]-[hash].js`,
+        chunkFileNames: `[name]-[hash].js`,
+        assetFileNames: `[name]-[hash].[ext]`,
+      },
+    },
+    outDir: "./build",
+    emptyOutDir: true,
+  },
 });
