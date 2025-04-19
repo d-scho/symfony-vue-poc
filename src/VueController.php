@@ -13,6 +13,8 @@ use Symfony\Contracts\Cache\CacheInterface;
 #[AsController]
 final class VueController
 {
+    use GuessesMimeTypes;
+
     private const string BUILD_LOCATION = '/assets/vue-spa/build';
     private const string SERVED_FILES_PATH = self::BUILD_LOCATION . '/public';
     private const string MANIFEST_PATH = self::BUILD_LOCATION . '/internal-manifest.json';
@@ -38,7 +40,7 @@ final class VueController
             }
 
             return new Response(file_get_contents($filePath), headers: [
-                'Content-Type' => 'text/javascript',
+                'Content-Type' => $this->guessMimeType($filename),
             ]);
         });
     }
