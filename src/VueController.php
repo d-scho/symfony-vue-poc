@@ -48,7 +48,7 @@ final class VueController
     /**
      * @throws ManifestError
      */
-    #[Route(path: '/{path}', name: 'app_catch_all', requirements: ['path' => '.*'], methods: 'GET')]
+    #[Route(path: '/{path}', name: 'app_catch_all', requirements: ['path' => '.*'], methods: 'GET', priority: -1)]
     public function catchAll(): Response
     {
         $appFileName = $this->getAppFileName();
