@@ -22,12 +22,13 @@ export default defineConfig({
     rollupOptions: {
       input: fileURLToPath(new URL("./src/app.ts", import.meta.url)),
       output: {
-        entryFileNames: `[name]-[hash].js`,
-        chunkFileNames: `[name]-[hash].js`,
-        assetFileNames: `[name]-[hash].[ext]`,
+        entryFileNames: `public/[name]-[hash].js`,
+        chunkFileNames: `public/[name]-[hash].js`,
+        assetFileNames: `public/[name]-[hash].[ext]`,
       },
     },
     outDir: "./build",
     emptyOutDir: true,
+    manifest: 'internal-manifest.json',
   },
 });
